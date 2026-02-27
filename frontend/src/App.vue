@@ -261,7 +261,6 @@ async function loadTrend() {
 
       const validValues = list.filter(p => p.value != null).map(p => Number(p.value));
       const currentMax = validValues.length > 0 ? Math.max(...validValues) : 0;
-      // 确保 Y 轴高度至少能容纳到 150 (中度污染)，如果数据更大则自动扩展
       yAxisMax = currentMax < 150 ? 150 : null;
 
       if (validValues.length > 0) {
@@ -283,7 +282,7 @@ async function loadTrend() {
       aqiStandards.forEach((s) => {
         // 背景色带
         areaData.push([
-          { yAxis: lowerBound, itemStyle: { color: hexToRgba(s.color, 0.3) } }, // 0.3 透明度，颜色更明显
+          { yAxis: lowerBound, itemStyle: { color: hexToRgba(s.color, 1) } },
           { yAxis: s.limit }
         ]);
 
